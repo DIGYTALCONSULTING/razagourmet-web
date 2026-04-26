@@ -11,6 +11,7 @@ const emit = defineEmits<{
 
 const selectedVariantId = ref(props.product.variants[0]?.id ?? '')
 const quantity = ref(1)
+const assetPath = useAssetPath()
 
 const selectedVariant = computed(
   () => props.product.variants.find(variant => variant.id === selectedVariantId.value) ?? props.product.variants[0]
@@ -47,7 +48,7 @@ const submit = () => {
   <article class="group flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-stone-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
     <div class="relative overflow-hidden bg-amber-50">
       <img
-        :src="product.image"
+        :src="assetPath(product.image)"
         :alt="`Producto ${product.name} de Raza & Gourmet`"
         class="h-56 w-full object-cover transition duration-500 group-hover:scale-105"
         loading="lazy"

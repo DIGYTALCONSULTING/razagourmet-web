@@ -9,6 +9,7 @@ const emit = defineEmits<{
 
 const { items, subtotal, totalItems, updateQuantity, removeItem, clearCart } = useCart()
 const { openWhatsAppOrder, buildMessage, formatCurrency } = useWhatsAppOrder()
+const assetPath = useAssetPath()
 
 const form = reactive({
   name: '',
@@ -113,7 +114,7 @@ onBeforeUnmount(() => {
             >
               <div class="flex gap-4">
                 <img
-                  :src="item.productImage"
+                  :src="assetPath(item.productImage)"
                   :alt="`Producto ${item.productName}`"
                   class="h-20 w-20 rounded-2xl bg-amber-50 object-cover"
                 >

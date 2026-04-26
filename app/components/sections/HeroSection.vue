@@ -33,6 +33,7 @@ const heroSlides = [
 
 const activeSlide = ref(0)
 let autoplayInterval: ReturnType<typeof setInterval> | null = null
+const assetPath = useAssetPath()
 const activeHeroSlide = computed(() => heroSlides[activeSlide.value] ?? heroSlides[0])
 
 const startAutoplay = () => {
@@ -117,7 +118,7 @@ onBeforeUnmount(stopAutoplay)
         <div class="relative h-full overflow-hidden rounded-[2rem] border border-white/70 bg-[#c99a39] shadow-[0_30px_80px_rgba(89,56,12,0.24)]">
           <article class="absolute inset-0">
             <img
-              :src="activeHeroSlide.image"
+              :src="assetPath(activeHeroSlide.image)"
               :alt="activeHeroSlide.alt"
               :width="activeHeroSlide.width"
               :height="activeHeroSlide.height"
