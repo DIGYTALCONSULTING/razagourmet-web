@@ -16,8 +16,11 @@ export const useWhatsAppOrder = () => {
     deliveryPreference?: string
     notes?: string
   }) => {
+    const hasCartItems = items.value.length > 0
     const lines = [
-      `Hola, quiero hacer un pedido asistido con ${config.public.brandName}.`,
+      hasCartItems
+        ? `Hola, quiero hacer un pedido asistido con ${config.public.brandName}.`
+        : `Hola, quiero averiguar por los productos del catalogo de ${config.public.brandName}.`,
       ''
     ]
 
@@ -30,19 +33,32 @@ export const useWhatsAppOrder = () => {
       lines.push('')
     }
 
-    lines.push('Resumen del carrito:')
+    if (hasCartItems) {
+      lines.push('Resumen del carrito:')
 
-    items.value.forEach((item, index) => {
+      items.value.forEach((item, index) => {
+        lines.push(
+          `${index + 1}. ${item.productName} - ${item.variantName} x${item.quantity} (${formatCurrency(item.price * item.quantity)})`
+        )
+      })
+
+      lines.push('', `Subtotal de referencia: ${formatCurrency(subtotal.value)}`, '')
+    } else {
       lines.push(
-        `${index + 1}. ${item.productName} - ${item.variantName} x${item.quantity} (${formatCurrency(item.price * item.quantity)})`
+        'Todavia no he seleccionado productos en el carrito.',
+        'Me pueden orientar sobre que producto del catalogo recomiendan segun mi mascota, disponibilidad y precios?',
+        ''
       )
-    })
+    }
 
-    lines.push('', `Subtotal de referencia: ${formatCurrency(subtotal.value)}`, '')
     if (customer?.notes) {
       lines.push(`Notas: ${customer.notes}`, '')
     }
-    lines.push('Quedo atento a disponibilidad, cobertura y confirmacion final. Gracias.')
+    lines.push(
+      hasCartItems
+        ? 'Quedo atento a disponibilidad, cobertura y confirmacion final. Gracias.'
+        : 'Quedo atento para contarles que mascota tengo y que producto me interesa. Gracias.'
+    )
 
     return lines.join('\n')
   }
