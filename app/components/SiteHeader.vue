@@ -27,7 +27,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <header class="sticky top-0 z-40 border-b border-stone-200/80 bg-[#fffaf4]/92 backdrop-blur-xl">
+  <header class="sticky top-0 z-40 bg-[#fffaf4]/92 backdrop-blur-xl">
     <div class="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:px-8">
       <a href="#inicio" class="flex min-w-0 items-center gap-3" @click="isMenuOpen = false">
         <img :src="assetPath('/images/logo_site_header-small.webp')" alt="Raza & Gourmet" class="h-12 w-auto sm:h-14" />

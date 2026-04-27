@@ -27,55 +27,97 @@ export const productCategories: Array<{ id: ProductCategory | 'todos'; label: st
 
 export const products: Product[] = [
   {
-    id: 'galleta-pollo',
+    id: 'galleta-proteina',
     category: 'galletas',
-    name: 'Galletas Horno Casero',
-    image: '/images/products/galletas-horno-casero.svg',
-    description: 'Snacks horneados con textura crocante para consentir sin complicarte.',
-    bestFor: 'Premios diarios y paseos',
-    highlights: ['Horneadas', 'Textura crocante', 'Porciones prácticas'],
+    name: 'Galletas de proteina',
+    image: '/images/products/galletas_proteina.webp',
+    description: 'Antioxidante y fuente de ácidos grasos Omega 6. Ideales si tienes un perro nervioso debidoa que son un calmante natural.',
+    bestFor: 'Comida diara y premio',
+    highlights: ['Pollo', 'Hígado', 'Remolacha','Jengibre'],
     variants: [
-      { id: 'bolsa-120g', name: 'Bolsa 120 g', price: 18000, unitLabel: 'bolsa' },
-      { id: 'bolsa-250g', name: 'Bolsa 250 g', price: 32000, unitLabel: 'bolsa' }
+      { id: 'paquete-240g', name: 'Paquete 240 g', price: 9000, unitLabel: 'paquete' },
+      { id: 'paquete-480g', name: 'Paquete 480 g', price: 18000, unitLabel: 'paquete' }
     ]
   },
   {
-    id: 'galleta-mixta',
+    id: 'galleta-frutas',
     category: 'galletas',
-    name: 'Bites de Avena y Zanahoria',
-    image: '/images/products/bites-avena-zanahoria.svg',
-    description: 'Bocados pequeños para entrenamiento, rutinas de recompensa y snacks rápidos.',
-    bestFor: 'Entrenamiento y recompensa',
-    highlights: ['Tamaño mini', 'Fácil de llevar', 'Formato práctico'],
+    name: 'Galletas de frutas',
+    image: '/images/products/galletas_frutas_.webp',
+    description: 'Fuente de fibra, ayudaa mantener niveles de colesterol bajos, previene enfermedades cardíacas, otorga más brillo a su pelaje.',
+    bestFor: 'Comida diaria,Entrenamiento y Recompensa',
+    highlights: ['Manzana', 'Canela', 'Abano', 'Coco'],
     variants: [
-      { id: 'frasco-90g', name: 'Frasco 90 g', price: 16000, unitLabel: 'frasco' },
-      { id: 'frasco-180g', name: 'Frasco 180 g', price: 28000, unitLabel: 'frasco' }
+        { id: 'paquete-240g', name: 'Paquete 240 g', price: 9000, unitLabel: 'paquete' },
+      { id: 'paquete-480g', name: 'Paquete 480 g', price: 18000, unitLabel: 'paquete' }
     ]
   },
   {
-    id: 'helado-yogurt',
+    id: 'helado-proteina',
     category: 'helados',
-    name: 'Heladitos Gourmet',
+    name: 'Helados de Proteína',
     image: '/images/products/heladitos-gourmet.svg',
-    description: 'Snack frío para días calurosos o momentos especiales, listo para servir.',
+    description: 'Antioxidante y fuente de ácidos grasos Omega 6. Vitaminas A y B, hierroy cobre. Mantiene los huesos, piel y pelaje sanos',
     bestFor: 'Días calurosos y celebración',
-    highlights: ['Porción individual', 'Momento especial', 'Listo para servir'],
+    highlights: ['Pollo', 'Hígado', 'Remolacha','Jengibre'],
     variants: [
-      { id: 'pack-4', name: 'Pack x4', price: 24000, unitLabel: 'pack' },
-      { id: 'pack-8', name: 'Pack x8', price: 44000, unitLabel: 'pack' }
+      { id: 'pequeño', name: 'Pequeño 15g', price: 2000, unitLabel: 'pack' },
+      { id: 'mediano', name: 'Mediano 25g', price: 3000, unitLabel: 'pack' },
+      { id: 'grande', name: 'Grande 50g', price: 5000, unitLabel: 'pack' },
+    ]
+  },
+{
+    id: 'helado-frutas',
+    category: 'helados',
+    name: 'Helados de Frutas',
+    image: '/images/products/heladitos-gourmet.svg',
+    description: 'Refrescante, contiene vitaminas A, E y C, fibra dietética, aporta a la visión y la piel, mejora la digestión e inflamación',
+    bestFor: 'Días calurosos y celebración',
+    highlights: ['Mango', 'Arándanos', 'Melón','Hierbabuena'],
+    variants: [
+      { id: 'pequeño', name: 'Pequeño 15g', price: 2000, unitLabel: 'pack' },
+      { id: 'mediano', name: 'Mediano 25g', price: 3000, unitLabel: 'pack' },
+      { id: 'grande', name: 'Grande 50g', price: 5000, unitLabel: 'pack' },
     ]
   },
   {
-    id: 'mix-fiesta',
+    id: 'Brownies',
     category: 'otros',
-    name: 'Box Celebración',
+    name: 'Brownies',
     image: '/images/products/box-celebracion.svg',
-    description: 'Selección surtida para regalos, cumpleaños y fechas especiales.',
+    description: 'Es una excelente fuente de nutrientes, rica en ácido pantoténico, hierro, zinc, proteínas, vitaminas y minerales. Ayuda a combatir el estrés, promover la producción de glóbulosrojos y prevenir la anemia.',
     bestFor: 'Regalos y cumpleaños',
-    highlights: ['Presentación premium', 'Para regalo', 'Selección surtida'],
+    highlights: ['ingrediente 1', 'ingrediente 2', 'Ingrediente 3'],
     variants: [
-      { id: 'box-mini', name: 'Box Mini', price: 39000, unitLabel: 'box' },
-      { id: 'box-completa', name: 'Box Completa', price: 69000, unitLabel: 'box' }
+      { id: 'medianos', name: 'Mediano 120 gr', price: 4000, unitLabel: 'box' },
+      { id: 'grandes', name: 'Grande 230 gr', price: 5500, unitLabel: 'box' }
+    ]
+  },
+{
+    id: 'Gimitas de Colageno',
+    category: 'otros',
+    name: 'Gimitas de Colageno',
+    image: '/images/products/box-celebracion.svg',
+    description: 'Fuente natural de carbohidratos, vitaminas y minerales, beneficia la salud cardiovascular, ocular y dental.',
+    bestFor: 'Snacks y Regalo de cumpleaños',
+    highlights: ['ingrediente 1', 'ingrediente 2', 'Ingrediente 3'],
+    variants: [
+      { id: 'pequeña', name: 'Mediano 120 gr', price: 1000, unitLabel: 'box' },
+      { id: 'grandes', name: 'Grande 230 gr', price: 2500, unitLabel: 'box' }
+    ]
+  },
+  {
+    id: 'Tortas',
+    category: 'otros',
+    name: 'Tortas',
+    image: '/images/products/box-celebracion.svg',
+    description: 'Contienen aminoácidos esenciales, recupera tejidos, el pelo, los músculos y tendones. Vitaminas minerales y nutrientes esenciales..',
+    bestFor: 'Regalos y cumpleaños',
+    highlights: ['ingrediente 1', 'ingrediente 2', 'Ingrediente 3'],
+    variants: [
+      { id: 'pequeñas', name: 'Pequeña 180 gr', price: 25000, unitLabel: 'box' },
+      { id: 'medianas', name: 'Mediana 250 gr', price: 50000, unitLabel: 'box' },
+      { id: 'grandes', name: 'Grande 500 gr', price: 80000, unitLabel: 'box' }
     ]
   }
 ]

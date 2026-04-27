@@ -56,8 +56,8 @@ const submit = () => {
       <div class="absolute left-3 top-3 rounded-full bg-white/92 px-3 py-1 text-[0.68rem] font-black uppercase tracking-[0.16em] text-stone-700 shadow-sm">
         {{ product.category }}
       </div>
-      <div class="absolute bottom-3 left-3 right-3 rounded-2xl bg-stone-950/72 px-4 py-3 text-white backdrop-blur">
-        <p class="text-xs font-black uppercase tracking-[0.16em] text-amber-200">Ideal para</p>
+      <div class="absolute bottom-3 left-3 right-3 rounded-2xl bg-stone-950/72 px-4 py-3 text-black-600 backdrop-blur">
+        <p class="text-xs font-black uppercase tracking-[0.16em] text-black-600">Ideal para</p>
         <p class="mt-1 text-sm font-bold">{{ product.bestFor }}</p>
       </div>
     </div>
@@ -65,7 +65,7 @@ const submit = () => {
     <div class="flex flex-1 flex-col gap-5 p-5">
       <div>
         <h3 class="text-xl font-black leading-tight text-stone-950">{{ product.name }}</h3>
-        <p class="mt-2 text-sm leading-6 text-stone-600">{{ product.description }}</p>
+        <p class="mt-2 text-justify text-sm leading-6 text-stone-600">{{ product.description }}</p>
       </div>
 
       <ul class="flex flex-wrap gap-2 text-xs font-bold text-stone-700">

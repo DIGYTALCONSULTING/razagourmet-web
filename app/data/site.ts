@@ -26,7 +26,7 @@ export const siteData = {
   benefits: [
     {
       title: 'Ingredientes claros',
-      description: 'Presentamos cada producto con formato, precio de referencia y beneficios para elegir sin vueltas.'
+      description: 'Presentamos cada producto con formato, precio de referencia y beneficios para elegir fácilmente.'
     },
     {
       title: 'Pedido asistido',
@@ -34,7 +34,7 @@ export const siteData = {
     },
     {
       title: 'Compra con confianza',
-      description: 'Antes de pagar, se valida cobertura, tiempos, presentación y recomendaciones para la mascota.'
+      description: 'Antes de pagar, se valida cobertura, tiempos, presentación y recomendaciones para cada peludito.'
     }
   ],
   trustItems: [
