@@ -22,7 +22,7 @@ export const productCategories: Array<{ id: ProductCategory | 'todos'; label: st
   { id: 'todos', label: 'Todos' },
   { id: 'galletas', label: 'Galletas' },
   { id: 'helados', label: 'Helados' },
-  { id: 'otros', label: 'Otros productos' }
+  { id: 'otros', label: 'Especiales' }
 ]
 
 export const products: Product[] = [
@@ -56,7 +56,7 @@ export const products: Product[] = [
     id: 'helado-proteina',
     category: 'helados',
     name: 'Helados de Proteína',
-    image: '/images/products/heladitos-gourmet.svg',
+    image: '/images/products/paletas_proteina.webp',
     description: 'Antioxidante y fuente de ácidos grasos Omega 6. Vitaminas A y B, hierroy cobre. Mantiene los huesos, piel y pelaje sanos',
     bestFor: 'Días calurosos y celebración',
     highlights: ['Pollo', 'Hígado', 'Remolacha','Jengibre'],
@@ -70,7 +70,7 @@ export const products: Product[] = [
     id: 'helado-frutas',
     category: 'helados',
     name: 'Helados de Frutas',
-    image: '/images/products/heladitos-gourmet.svg',
+    image: '/images/products/paletas_fruta.webp',
     description: 'Refrescante, contiene vitaminas A, E y C, fibra dietética, aporta a la visión y la piel, mejora la digestión e inflamación',
     bestFor: 'Días calurosos y celebración',
     highlights: ['Mango', 'Arándanos', 'Melón','Hierbabuena'],
@@ -84,7 +84,7 @@ export const products: Product[] = [
     id: 'Brownies',
     category: 'otros',
     name: 'Brownies',
-    image: '/images/products/box-celebracion.svg',
+    image: '/images/products/brownies.webp',
     description: 'Es una excelente fuente de nutrientes, rica en ácido pantoténico, hierro, zinc, proteínas, vitaminas y minerales. Ayuda a combatir el estrés, promover la producción de glóbulosrojos y prevenir la anemia.',
     bestFor: 'Regalos y cumpleaños',
     highlights: ['ingrediente 1', 'ingrediente 2', 'Ingrediente 3'],
@@ -97,7 +97,7 @@ export const products: Product[] = [
     id: 'Gimitas de Colageno',
     category: 'otros',
     name: 'Gimitas de Colageno',
-    image: '/images/products/box-celebracion.svg',
+    image: '/images/products/gomitas.webp',
     description: 'Fuente natural de carbohidratos, vitaminas y minerales, beneficia la salud cardiovascular, ocular y dental.',
     bestFor: 'Snacks y Regalo de cumpleaños',
     highlights: ['ingrediente 1', 'ingrediente 2', 'Ingrediente 3'],
@@ -110,7 +110,7 @@ export const products: Product[] = [
     id: 'Tortas',
     category: 'otros',
     name: 'Tortas',
-    image: '/images/products/box-celebracion.svg',
+    image: '/images/products/tortas.webp',
     description: 'Contienen aminoácidos esenciales, recupera tejidos, el pelo, los músculos y tendones. Vitaminas minerales y nutrientes esenciales..',
     bestFor: 'Regalos y cumpleaños',
     highlights: ['ingrediente 1', 'ingrediente 2', 'Ingrediente 3'],

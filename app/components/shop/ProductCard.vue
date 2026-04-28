@@ -17,6 +17,10 @@ const selectedVariant = computed(
   () => props.product.variants.find(variant => variant.id === selectedVariantId.value) ?? props.product.variants[0]
 )
 
+const imagePositionClass = computed(() =>
+  props.product.category === 'helados' ? 'object-top' : 'object-center'
+)
+
 const formatter = new Intl.NumberFormat('es-CO', {
   style: 'currency',
   currency: 'COP',
@@ -50,29 +54,29 @@ const submit = () => {
       <img
         :src="assetPath(product.image)"
         :alt="`Producto ${product.name} de Raza & Gourmet`"
-        class="h-56 w-full object-cover transition duration-500 group-hover:scale-105"
+        :class="['h-52 w-full object-cover transition duration-500 group-hover:scale-105', imagePositionClass]"
         loading="lazy"
       >
       <div class="absolute left-3 top-3 rounded-full bg-white/92 px-3 py-1 text-[0.68rem] font-black uppercase tracking-[0.16em] text-stone-700 shadow-sm">
         {{ product.category }}
       </div>
-      <div class="absolute bottom-3 left-3 right-3 rounded-2xl bg-stone-950/72 px-4 py-3 text-black-600 backdrop-blur">
-        <p class="text-xs font-black uppercase tracking-[0.16em] text-black-600">Ideal para</p>
-        <p class="mt-1 text-sm font-bold">{{ product.bestFor }}</p>
-      </div>
     </div>
 
-    <div class="flex flex-1 flex-col gap-5 p-5">
+    <div class="flex flex-1 flex-col gap-4 p-4">
       <div>
-        <h3 class="text-xl font-black leading-tight text-stone-950">{{ product.name }}</h3>
-        <p class="mt-2 text-justify text-sm leading-6 text-stone-600">{{ product.description }}</p>
+        <h3 class="text-lg font-black leading-snug text-stone-950">{{ product.name }}</h3>
+        <p class="mt-2 text-justify text-sm leading-5 text-stone-600">{{ product.description }}</p>
+        <div class="mt-3 rounded-2xl bg-stone-100 px-3 py-2 text-stone-700">
+          <p class="text-[0.65rem] font-black uppercase tracking-[0.16em] text-stone-500">Ideal para</p>
+          <p class="mt-1 text-sm font-semibold leading-snug">{{ product.bestFor }}</p>
+        </div>
       </div>
 
-      <ul class="flex flex-wrap gap-2 text-xs font-bold text-stone-700">
+      <ul class="flex flex-wrap gap-1.5 text-[0.68rem] font-bold text-stone-700">
         <li
           v-for="highlight in product.highlights"
           :key="highlight"
-          class="rounded-full bg-amber-50 px-3 py-1 text-amber-900"
+          class="rounded-full bg-amber-50 px-2 py-1 text-amber-900"
         >
           {{ highlight }}
         </li>
