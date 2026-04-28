@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { Product } from '../../data/products'
+import { productCategories } from '../../data/products'
 
 const props = defineProps<{
   product: Product
@@ -20,6 +21,13 @@ const selectedVariant = computed(
 const imagePositionClass = computed(() =>
   props.product.category === 'helados' ? 'object-top' : 'object-center'
 )
+
+const categoryLabel = computed(() => {
+  return (
+    productCategories.find(category => category.id === props.product.category)
+      ?.label ?? props.product.category
+  )
+})
 
 const formatter = new Intl.NumberFormat('es-CO', {
   style: 'currency',
@@ -58,7 +66,7 @@ const submit = () => {
         loading="lazy"
       >
       <div class="absolute left-3 top-3 rounded-full bg-white/92 px-3 py-1 text-[0.68rem] font-black uppercase tracking-[0.16em] text-stone-700 shadow-sm">
-        {{ product.category }}
+        {{ categoryLabel }}
       </div>
     </div>
 

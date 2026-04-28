@@ -82,7 +82,7 @@ export const products: Product[] = [
   },
   {
     id: 'Brownies',
-    category: 'otros',
+    category:'otros',
     name: 'Brownies',
     image: '/images/products/brownies.webp',
     description: 'Es una excelente fuente de nutrientes, rica en ácido pantoténico, hierro, zinc, proteínas, vitaminas y minerales. Ayuda a combatir el estrés, promover la producción de glóbulosrojos y prevenir la anemia.',
