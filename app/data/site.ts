@@ -5,7 +5,7 @@ export const siteData = {
   description:
     'Raza & Gourmet prepara snacks, heladitos y detalles especiales para perros y gatos, con pedidos asistidos por WhatsApp.',
   phoneDisplay: '+57 322 2070275',
-  email: 'ventas@razagourmet.com',
+  email: 'razaygourmet@gmail.com',
   location: 'Bogotá, Colombia',
   coverage: 'Pedidos bajo confirmación de cobertura',
   whatsappLabel: 'Pedir por WhatsApp',
@@ -62,7 +62,7 @@ export const siteData = {
     'Atención humana para recomendar según tu mascota.'
   ],
   socialLinks: [
-    { label: 'Instagram', href: '#' },
+    { label: 'Instagram', href: 'https://www.instagram.com/raza_gourmet/' },
     { label: 'Facebook', href: '#' }
   ]
 }

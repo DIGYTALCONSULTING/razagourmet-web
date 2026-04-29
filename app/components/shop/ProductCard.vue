@@ -57,7 +57,7 @@ const submit = () => {
 </script>
 
 <template>
-  <article class="group flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-stone-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
+  <article class="group flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-stone-200 bg-white shadow-sm hover-lift">
     <div class="relative overflow-hidden bg-amber-50">
       <img
         :src="assetPath(product.image)"

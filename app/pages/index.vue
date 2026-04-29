@@ -3,6 +3,7 @@ import HeroSection from '../components/sections/HeroSection.vue'
 import BenefitsSection from '../components/sections/BenefitsSection.vue'
 import ProductsSection from '../components/sections/ProductsSection.vue'
 import TrustSection from '../components/sections/TrustSection.vue'
+import ReviewsSection from '../components/sections/ReviewsSection.vue'
 import ProcessSection from '../components/sections/ProcessSection.vue'
 import FaqSection from '../components/sections/FaqSection.vue'
 import ContactSection from '../components/sections/ContactSection.vue'
@@ -86,6 +87,7 @@ useHead({
       <BenefitsSection />
       <ProductsSection @added="openCart" />
       <TrustSection />
+      <ReviewsSection />
       <ProcessSection />
       <FaqSection />
       <ContactSection />

@@ -3,6 +3,7 @@ import ProductCard from '../shop/ProductCard.vue'
 import ProductFilters from '../shop/ProductFilters.vue'
 import { productCategories, products } from '../../data/products'
 import type { Product, ProductCategory } from '../../data/products'
+import { useScrollAnimation } from '../../../composables/useScrollAnimation'
 
 const emit = defineEmits<{
   added: []
@@ -10,6 +11,9 @@ const emit = defineEmits<{
 
 const selectedCategory = ref<ProductCategory | 'todos'>('todos')
 const { addItem } = useCart()
+
+const sectionRef = ref<HTMLElement | null>(null)
+useScrollAnimation(sectionRef, 'animate-fade-in-up')
 
 const filteredProducts = computed(() => {
   if (selectedCategory.value === 'todos') {
@@ -32,7 +36,7 @@ const handleAdd = (payload: { product: Product; variantId: string; quantity: num
 </script>
 
 <template>
-  <section id="catalogo" class="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+  <section ref="sectionRef" id="catalogo" class="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20 opacity-0 translate-y-8">
     <div class="grid gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(20rem,0.55fr)] lg:items-end">
       <div>
         <p class="text-sm font-black uppercase tracking-[0.22em] text-amber-700">Catálogo</p>

@@ -6,9 +6,10 @@ import { siteData } from '../../data/site'
   <section class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
     <div class="grid gap-4 lg:grid-cols-3">
       <article
-        v-for="benefit in siteData.benefits"
+        v-for="(benefit, index) in siteData.benefits"
         :key="benefit.title"
-        class="rounded-[1.5rem] border border-stone-200 bg-white p-6 shadow-sm"
+        class="benefit-card rounded-[1.5rem] border border-stone-200 bg-white p-6 shadow-sm hover-lift"
+        :style="{ '--benefit-delay': `${index * 0.04}s` }"
       >
         <span class="mb-5 block h-1.5 w-12 rounded-full bg-amber-500" />
         <h2 class="text-2xl font-black leading-tight text-stone-950">{{ benefit.title }}</h2>

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { siteData } from '../../data/site'
+import { useScrollAnimation } from '../../../composables/useScrollAnimation'
 
 const heroSlides = [
   {
@@ -39,6 +40,9 @@ let autoplayInterval: ReturnType<typeof setInterval> | null = null
 const assetPath = useAssetPath()
 const activeHeroSlide = computed(() => heroSlides[activeSlide.value] ?? heroSlides[0])
 
+const sectionRef = ref<HTMLElement | null>(null)
+useScrollAnimation(sectionRef, 'animate-fade-in-up')
+
 const startAutoplay = () => {
   stopAutoplay()
   autoplayInterval = setInterval(() => {
@@ -61,7 +65,7 @@ onBeforeUnmount(stopAutoplay)
   <section id="inicio" class="relative overflow-hidden bg-[#fffaf4]">
     <div class="absolute inset-x-0 top-0 h-32 bg-[linear-gradient(180deg,#f5e2bd_0%,rgba(255,250,244,0)_100%)]" />
 
-    <div class="relative mx-auto grid max-w-7xl gap-6 px-4 pb-10 pt-4 sm:px-6 lg:grid-cols-[1.08fr_0.92fr] lg:gap-10 lg:px-8 lg:pb-10 lg:pt-6">
+    <div ref="sectionRef" class="relative mx-auto grid max-w-7xl gap-6 px-4 pb-10 pt-4 sm:px-6 lg:grid-cols-[1.08fr_0.92fr] lg:gap-10 lg:px-8 lg:pb-10 lg:pt-6 opacity-0 translate-y-8">
       <div class="flex flex-col justify-center">
         <div class="inline-flex w-fit items-center gap-2 rounded-full border border-amber-200 bg-white/80 px-3 py-2 text-xs font-black uppercase tracking-[0.18em] text-amber-800 shadow-sm">
           <span class="h-2 w-2 rounded-full bg-emerald-500" />
@@ -79,13 +83,13 @@ onBeforeUnmount(stopAutoplay)
         <div class="mt-5 grid gap-3 sm:grid-cols-[auto_auto] sm:justify-start">
           <a
             href="#catalogo"
-            class="inline-flex min-h-12 items-center justify-center rounded-2xl bg-stone-950 px-6 py-3 text-sm font-black text-white shadow-[0_18px_40px_rgba(28,25,23,0.18)] transition hover:-translate-y-0.5 hover:bg-amber-500 hover:text-stone-950"
+            class="inline-flex min-h-12 items-center justify-center rounded-2xl bg-stone-950 px-6 py-3 text-sm font-black text-white shadow-[0_18px_40px_rgba(28,25,23,0.18)] transition hover:-translate-y-0.5 hover:bg-amber-500 hover:text-stone-950 hover-glow"
           >
             {{ siteData.primaryCta }}
           </a>
           <a
             href="#proceso"
-            class="inline-flex min-h-12 items-center justify-center rounded-2xl border border-stone-300 bg-white px-6 py-3 text-sm font-black text-stone-800 transition hover:-translate-y-0.5 hover:border-stone-950"
+            class="inline-flex min-h-12 items-center justify-center rounded-2xl border border-stone-300 bg-white px-6 py-3 text-sm font-black text-stone-800 transition hover:-translate-y-0.5 hover:border-stone-950 hover-lift"
           >
             Cómo comprar
           </a>
