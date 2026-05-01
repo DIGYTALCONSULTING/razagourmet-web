@@ -7,6 +7,7 @@ const { openWhatsAppOrder } = useWhatsAppOrder()
 const form = reactive({
   name: '',
   phone: '',
+  email: '',
   interest: '',
   message: '',
   consent: false
@@ -55,7 +56,7 @@ const acceptPolicy = () => {
   openToast('Política de datos aceptada. Ya puedes enviar tu solicitud.', 'success')
 }
 
-const submitForm = () => {
+const submitForm = async () => {
   pending.value = true
   successMessage.value = ''
   errorMessage.value = ''
@@ -75,16 +76,29 @@ const submitForm = () => {
   }
 
   try {
+    const response = await $fetch<{ ok: boolean; emailSent?: boolean; message: string }>('/api/contact', {
+      method: 'POST',
+      body: {
+        name: form.name.trim(),
+        phone: form.phone.trim(),
+        email: form.email.trim(),
+        interest: form.interest.trim(),
+        message: form.message.trim(),
+        consent: form.consent
+      }
+    })
+
     openWhatsAppOrder({
       name: form.name.trim(),
       phone: form.phone.trim(),
       notes: `${form.interest.trim() ? `Interés: ${form.interest.trim()}. ` : ''}${form.message.trim()}`
     })
 
-    successMessage.value = 'Perfecto, abrimos WhatsApp con tu consulta. Te escribimos en breve.'
+    successMessage.value = response.message || 'Perfecto, recibimos tu solicitud y abrimos WhatsApp con tu consulta.'
     openToast(successMessage.value, 'success')
     form.name = ''
     form.phone = ''
+    form.email = ''
     form.interest = ''
     form.message = ''
     form.consent = false
@@ -159,6 +173,17 @@ const submitForm = () => {
         </div>
 
         <label class="mt-4 block">
+          <span class="mb-2 block text-sm font-bold text-stone-700">Correo electrónico opcional</span>
+          <input
+            v-model="form.email"
+            type="email"
+            autocomplete="email"
+            placeholder="correo@ejemplo.com"
+            class="w-full rounded-3xl border border-stone-300 bg-stone-50 px-4 py-3 text-sm text-stone-900 outline-none transition focus:border-stone-900"
+          />
+        </label>
+
+        <label class="mt-4 block">
           <span class="mb-2 block text-sm font-bold text-stone-700">Mascota o interés</span>
           <input
             v-model="form.interest"
@@ -213,7 +238,7 @@ const submitForm = () => {
           :class="canSubmit ? 'bg-stone-950' : 'bg-stone-300 text-stone-500 hover:bg-stone-300 hover:text-stone-500'"
           :disabled="pending || !canSubmit"
         >
-          {{ pending ? 'Preparando WhatsApp...' : 'Enviar por WhatsApp' }}
+          {{ pending ? 'Enviando solicitud...' : 'Enviar solicitud' }}
         </button>
       </form>
 

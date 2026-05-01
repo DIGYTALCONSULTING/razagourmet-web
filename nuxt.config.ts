@@ -69,7 +69,10 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    preset: 'github-pages'
+    preset: 'cloudflare_pages',
+    prerender: {
+      autoSubfolderIndex: false
+    }
   },
 
   routeRules: {
