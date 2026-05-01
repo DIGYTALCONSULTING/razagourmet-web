@@ -56,9 +56,9 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
-    resendApiKey: process.env.RESEND_API_KEY || '',
-    salesEmail: process.env.SALES_EMAIL || '',
-    fromEmail: process.env.FROM_EMAIL || 'Raza & Gourmet <onboarding@resend.dev>',
+    resendApiKey: process.env.NUXT_RESEND_API_KEY || process.env.RESEND_API_KEY || '',
+    salesEmail: process.env.NUXT_SALES_EMAIL || process.env.SALES_EMAIL || '',
+    fromEmail: process.env.NUXT_FROM_EMAIL || process.env.FROM_EMAIL || 'Raza & Gourmet <onboarding@resend.dev>',
     public: {
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || '',
       whatsappNumber: '573222070275',
