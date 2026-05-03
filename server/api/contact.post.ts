@@ -29,23 +29,26 @@ export default defineEventHandler(async event => {
     body.message
   ].join('\n')
 
-  const result = await sendSalesEmail({
-    subject: `Nuevo lead Raza & Gourmet - ${body.name}`,
-    replyTo: body.email,
-    text,
-    html: `
-      <div style="font-family:Arial,sans-serif;color:#1c1917;line-height:1.5">
-        <h1>Nuevo lead desde Raza & Gourmet</h1>
-        <p><strong>Nombre:</strong> ${escapeHtml(body.name)}</p>
-        <p><strong>Celular/WhatsApp:</strong> ${escapeHtml(body.phone)}</p>
-        <p><strong>Correo:</strong> ${escapeHtml(body.email || 'No indicado')}</p>
-        <p><strong>Mascota/interés:</strong> ${escapeHtml(body.interest || 'No indicado')}</p>
-        <p><strong>Autorizó tratamiento de datos:</strong> ${body.consent ? 'Sí' : 'No'}</p>
-        <p><strong>Mensaje:</strong></p>
-        <p>${escapeHtml(body.message)}</p>
-      </div>
-    `
-  })
+  const result = await sendSalesEmail(
+    {
+      subject: `Nuevo lead Raza & Gourmet - ${body.name}`,
+      replyTo: body.email,
+      text,
+      html: `
+        <div style="font-family:Arial,sans-serif;color:#1c1917;line-height:1.5">
+          <h1>Nuevo lead desde Raza & Gourmet</h1>
+          <p><strong>Nombre:</strong> ${escapeHtml(body.name)}</p>
+          <p><strong>Celular/WhatsApp:</strong> ${escapeHtml(body.phone)}</p>
+          <p><strong>Correo:</strong> ${escapeHtml(body.email || 'No indicado')}</p>
+          <p><strong>Mascota/interés:</strong> ${escapeHtml(body.interest || 'No indicado')}</p>
+          <p><strong>Autorizó tratamiento de datos:</strong> ${body.consent ? 'Sí' : 'No'}</p>
+          <p><strong>Mensaje:</strong></p>
+          <p>${escapeHtml(body.message)}</p>
+        </div>
+      `
+    },
+    event
+  )
 
   return {
     ok: true,

@@ -85,11 +85,14 @@ export default defineEventHandler(async event => {
     </div>
   `
 
-  const result = await sendSalesEmail({
-    subject: `Nuevo pedido Raza & Gourmet - ${customer.name}`,
-    html,
-    text
-  })
+  const result = await sendSalesEmail(
+    {
+      subject: `Nuevo pedido Raza & Gourmet - ${customer.name}`,
+      html,
+      text
+    },
+    event
+  )
 
   return {
     ok: true,

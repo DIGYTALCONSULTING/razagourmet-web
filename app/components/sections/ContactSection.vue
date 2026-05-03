@@ -2,7 +2,7 @@
 import { siteData } from '../../data/site'
 import { useScrollAnimation } from '../../../composables/useScrollAnimation'
 
-const { openWhatsAppOrder } = useWhatsAppOrder()
+const { getWhatsAppUrl } = useWhatsAppOrder()
 
 const form = reactive({
   name: '',
@@ -75,12 +75,20 @@ const submitForm = async () => {
     return
   }
 
+  const customer = {
+    name: form.name.trim(),
+    phone: form.phone.trim(),
+    notes: `${form.interest.trim() ? `Interés: ${form.interest.trim()}. ` : ''}${form.message.trim()}`
+  }
+  const whatsappUrl = getWhatsAppUrl(customer)
+  const whatsappWindow = import.meta.client ? window.open('', '_blank', 'noopener,noreferrer') : null
+
   try {
     const response = await $fetch<{ ok: boolean; emailSent?: boolean; message: string }>('/api/contact', {
       method: 'POST',
       body: {
-        name: form.name.trim(),
-        phone: form.phone.trim(),
+        name: customer.name,
+        phone: customer.phone,
         email: form.email.trim(),
         interest: form.interest.trim(),
         message: form.message.trim(),
@@ -88,11 +96,11 @@ const submitForm = async () => {
       }
     })
 
-    openWhatsAppOrder({
-      name: form.name.trim(),
-      phone: form.phone.trim(),
-      notes: `${form.interest.trim() ? `Interés: ${form.interest.trim()}. ` : ''}${form.message.trim()}`
-    })
+    if (whatsappWindow) {
+      whatsappWindow.location.href = whatsappUrl
+    } else if (import.meta.client) {
+      window.location.href = whatsappUrl
+    }
 
     successMessage.value = response.message || 'Perfecto, recibimos tu solicitud y abrimos WhatsApp con tu consulta.'
     openToast(successMessage.value, 'success')
@@ -103,6 +111,7 @@ const submitForm = async () => {
     form.message = ''
     form.consent = false
   } catch (error) {
+    whatsappWindow?.close()
     errorMessage.value = error instanceof Error ? error.message : 'No fue posible abrir WhatsApp. Intenta de nuevo.'
     openToast(errorMessage.value, 'error')
   } finally {
