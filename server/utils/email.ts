@@ -52,23 +52,32 @@ export const sendSalesEmail = async (payload: EmailPayload, event?: { context?: 
     }
   }
 
-  const response = await $fetch<{ id?: string }>('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${apiKey}`
-    },
-    body: {
-      from: fromEmail,
-      to: [salesEmail],
-      reply_to: payload.replyTo,
-      subject: payload.subject,
-      html: payload.html,
-      text: payload.text
-    }
-  })
+  try {
+    const response = await $fetch<{ id?: string }>('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${apiKey}`
+      },
+      body: {
+        from: fromEmail,
+        to: [salesEmail],
+        ...(payload.replyTo ? { reply_to: payload.replyTo } : {}),
+        subject: payload.subject,
+        html: payload.html,
+        text: payload.text
+      }
+    })
 
-  return {
-    sent: true,
-    id: response.id
+    return {
+      sent: true,
+      id: response.id
+    }
+  } catch (error) {
+    console.error('Resend email failed', error)
+
+    return {
+      sent: false,
+      reason: 'Email provider rejected the message.'
+    }
   }
 }
