@@ -35,6 +35,24 @@ const getEnvValue = (env: RuntimeEnv, keys: string[]) => {
   return ''
 }
 
+const getEmailErrorReason = (error: unknown) => {
+  const fetchError = error as {
+    status?: number
+    statusCode?: number
+    statusMessage?: string
+    data?: {
+      message?: string
+      name?: string
+      error?: string
+    }
+    message?: string
+  }
+  const status = fetchError.status || fetchError.statusCode
+  const providerMessage = fetchError.data?.message || fetchError.data?.error || fetchError.statusMessage || fetchError.message
+
+  return [status ? `Resend status ${status}` : '', providerMessage].filter(Boolean).join(': ')
+}
+
 export const sendSalesEmail = async (payload: EmailPayload, event?: { context?: Record<string, any> }) => {
   const config = useRuntimeConfig(event)
   const env = getCloudflareEnv(event)
@@ -77,7 +95,7 @@ export const sendSalesEmail = async (payload: EmailPayload, event?: { context?: 
 
     return {
       sent: false,
-      reason: 'Email provider rejected the message.'
+      reason: getEmailErrorReason(error) || 'Email provider rejected the message.'
     }
   }
 }
