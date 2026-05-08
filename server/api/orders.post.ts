@@ -97,6 +97,7 @@ export default defineEventHandler(async event => {
   return {
     ok: true,
     emailSent: result.sent,
+    emailReason: result.sent ? undefined : result.reason,
     message: result.sent
       ? 'Pedido enviado a ventas. También abriremos WhatsApp para continuar la conversación.'
       : 'Pedido preparado. Configura RESEND_API_KEY y SALES_EMAIL para enviar correos automáticos; continuamos por WhatsApp.'

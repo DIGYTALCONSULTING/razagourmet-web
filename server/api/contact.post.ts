@@ -53,8 +53,9 @@ export default defineEventHandler(async event => {
   return {
     ok: true,
     emailSent: result.sent,
+    emailReason: result.sent ? undefined : result.reason,
     message: result.sent
       ? `Gracias, ${body.name}. Recibimos tu solicitud y te responderemos pronto.`
-      : `Gracias, ${body.name}. Recibimos tu solicitud. Configura Resend para activar el correo automático.`
+      : `Gracias, ${body.name}. Recibimos tu solicitud. El correo automático aún no quedó activo.`
   }
 })
